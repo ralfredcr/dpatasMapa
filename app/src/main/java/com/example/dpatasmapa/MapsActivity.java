@@ -62,11 +62,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(veterinaria1).title("VET 01").snippet("Veterinaria 01 de prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.gps2)));
         LatLng veterinaria2 = new LatLng(-12.1158941, -77.0042199);
         mMap.addMarker(new MarkerOptions().position(veterinaria2).title("VET 02").snippet("Veterinaria 02 de prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.gps2)));
-        LatLng veterinaria3 = new LatLng(-12.115327, -77.0044125);
+        LatLng veterinaria3 = new LatLng(-12.1177908, -76.997579);
         mMap.addMarker(new MarkerOptions().position(veterinaria3).title("VET 03").snippet("Veterinaria 03 de prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.gps2)));
-        LatLng veterinaria4 = new LatLng(-12.1140781, -77.0033481);
+        LatLng veterinaria4 = new LatLng(-12.1064552, -76.9896187);
         mMap.addMarker(new MarkerOptions().position(veterinaria4).title("VET 04").snippet("Veterinaria 04 de prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.gps2)));
-        LatLng veterinaria5 = new LatLng(-12.1138284, -77.0032289);
+        LatLng veterinaria5 = new LatLng(-12.1125372, -77.0033883);
         mMap.addMarker(new MarkerOptions().position(veterinaria5).title("VET 04").snippet("Veterinaria 04 de prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.gps2)));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -81,19 +81,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         LocationManager locationManager = (LocationManager) MapsActivity.this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 LatLng miUbicacion = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(miUbicacion).title("ubicacion actual"));
+                mMap.addMarker(new MarkerOptions().position(miUbicacion).title("Mi ubicación").icon(BitmapDescriptorFactory.fromResource(R.drawable.icono2)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbicacion));
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(miUbicacion)
                         .zoom(14)
-                        .bearing(90)
-                        .tilt(45)
+                        .bearing(9)
                         .build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
